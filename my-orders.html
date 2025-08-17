@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect - My Orders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #f9fafb; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.6s ease-out forwards; animation-delay: var(--delay, 0s); }
+        .nav-active { background-color: #3b82f6; color: white; }
+        .nav-link { transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-leaf text-green-600 text-2xl mr-2"></i><h1 class="text-2xl font-bold text-gray-800">AgriConnect</h1>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="consumer-dashboard.html" class="nav-link text-gray-500 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                            <a href="categories.html" class="nav-link text-gray-500 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium">Categories</a>
+                            <a href="my-orders.html" class="nav-active px-3 py-2 rounded-md text-sm font-medium">My Orders</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <button id="logout-button" class="ml-4 flex items-center text-gray-500 hover:text-white hover:bg-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
+        <div class="px-4 md:px-0 fade-in">
+            <h1 class="text-3xl font-extrabold text-gray-900">Your Order History</h1>
+            <p class="mt-2 text-md text-gray-600">View and track your past and current orders.</p>
+        </div>
+
+        <div class="mt-8 flex flex-col fade-in" style="--delay: 200ms;">
+            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="shadow-lg overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-200">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Order ID</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Date</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Status</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Total</th>
+                                    <th scope="col" class="relative px-6 py-3"><span class="sr-only">View</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#AC2025-001</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">August 02, 2025</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Delivered</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 font-semibold">₹1,250.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <a href="#" class="view-details-btn text-blue-600 hover:text-blue-800 transition-colors">View Details</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#AC2025-002</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">August 03, 2025</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Shipped</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 font-semibold">₹840.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <a href="#" class="view-details-btn text-blue-600 hover:text-blue-800 transition-colors">View Details</a>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#AC2025-003</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">August 03, 2025</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Processing</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 font-semibold">₹300.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <a href="#" class="view-details-btn text-blue-600 hover:text-blue-800 transition-colors">View Details</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- AUTHENTICATION CHECK ---
+            if (sessionStorage.getItem('isLoggedIn') !== 'true' || sessionStorage.getItem('userType') !== 'Consumer') {
+                alert('Access Denied. Please log in as a Consumer to view this page.');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // --- LOGOUT FUNCTIONALITY ---
+            document.getElementById('logout-button')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                sessionStorage.clear();
+                alert('You have been logged out successfully.');
+                window.location.href = 'index.html';
+            });
+
+            // --- "VIEW DETAILS" BUTTON LOGIC ---
+            document.querySelectorAll('.view-details-btn').forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+
+                    // Find the parent row to get all data for that order
+                    const row = this.closest('tr');
+                    
+                    // Extract data from the table cells
+                    const orderId = row.cells[0].textContent;
+                    const date = row.cells[1].textContent;
+                    const status = row.cells[2].textContent.trim(); // .trim() removes extra whitespace
+                    const total = row.cells[3].textContent;
+
+                    // Display the details in an alert
+                    alert(
+                        `Order Details:\n\n` +
+                        `Order ID: ${orderId}\n` +
+                        `Date: ${date}\n` +
+                        `Status: ${status}\n` +
+                        `Total: ${total}`
+                    );
+                });
+            });
+        });
+    </script>
+</body>
+</html>

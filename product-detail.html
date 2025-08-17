@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect - Product Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #f9fafb; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.6s ease-out forwards; }
+        .nav-link { transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-leaf text-green-600 text-2xl mr-2"></i><h1 class="text-2xl font-bold text-gray-800">AgriConnect</h1>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="consumer-dashboard.html" class="nav-link text-gray-500 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                            <a href="categories.html" class="nav-link text-gray-500 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium">Categories</a>
+                            <a href="my-orders.html" class="nav-link text-gray-500 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium">My Orders</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <button id="cart-button" class="p-2 rounded-full text-gray-500 hover:text-white hover:bg-blue-500 transition-colors"><i class="fas fa-shopping-cart"></i></button>
+                        <button id="logout-button" class="ml-4 flex items-center text-gray-500 hover:text-white hover:bg-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-8 sm:px-6 lg:px-8">
+        <div class="px-4 py-6 sm:px-0 fade-in">
+            <nav id="breadcrumbs" class="text-sm font-medium mb-6 text-gray-500">
+                </nav>
+
+            <div class="bg-white shadow-xl rounded-lg overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="p-4">
+                        <div class="w-full h-96 bg-gray-200 rounded-lg overflow-hidden">
+                            <img id="product-image" src="" alt="Main product image" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <div class="p-8 flex flex-col justify-center">
+                        <h1 id="product-name" class="text-3xl font-extrabold text-gray-900 sm:text-4xl"></h1>
+                        <div id="product-price" class="mt-4">
+                            </div>
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold text-gray-800">Description</h3>
+                            <p id="product-description" class="mt-2 text-base text-gray-600"></p>
+                        </div>
+                        <div id="sold-by" class="mt-8 p-4 bg-gray-100 rounded-lg">
+                             </div>
+                        <div class="mt-8">
+                            <a id="contact-farmer-btn" href="#" class="w-full bg-blue-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-blue-700 transition-transform duration-300 hover:scale-105">
+                                <i class="fas fa-phone-alt mr-3"></i>
+                                Contact Farmer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- AUTHENTICATION & UI ---
+            if (sessionStorage.getItem('isLoggedIn') !== 'true' || sessionStorage.getItem('userType') !== 'Consumer') {
+                alert('Access Denied. Please log in as a Consumer.');
+                window.location.href = 'index.html';
+                return;
+            }
+            document.getElementById('logout-button')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                sessionStorage.clear();
+                alert('You have been logged out successfully.');
+                window.location.href = 'index.html';
+            });
+            document.getElementById('cart-button')?.addEventListener('click', () => alert('Shopping cart feature is coming soon!'));
+
+            // --- PRODUCT DATABASE (SIMPLIFIED IMAGES) ---
+            const products = {
+                tomatoes: {
+                    name: 'Fresh Organic Tomatoes',
+                    price: '₹30',
+                    unit: '/ kg',
+                    category: 'Vegetables',
+                    description: 'Grown in the fertile fields of Nashik, these organic tomatoes are bursting with flavor. Perfect for salads, sauces, and sandwiches.',
+                    image: 'images/tomatoes.jpg',
+                    farmer: { name: 'Ram Singh', location: 'Nashik, Maharashtra', tel: '+919876543210' }
+                },
+                mangoes: {
+                    name: 'Alphonso Mangoes',
+                    price: '₹600',
+                    unit: '/ dozen',
+                    category: 'Fruits',
+                    description: 'Known as the "King of Fruits," these Alphonso mangoes from Ratnagiri are sweet, creamy, and have a rich flavor.',
+                    image: 'images/mangoes.jpg',
+                    farmer: { name: 'Sita Devi', location: 'Ratnagiri, Maharashtra', tel: '+919123456789' }
+                },
+                cucumbers: {
+                    name: 'Crisp Green Cucumbers',
+                    price: '₹20',
+                    unit: '/ kg',
+                    category: 'Vegetables',
+                    description: 'These cucumbers are crisp, refreshing, and perfect for salads or a healthy snack. Grown using natural farming methods.',
+                    image: 'images/cucumbers.jpg',
+                    farmer: { name: 'Mohan Lal', location: 'Pune, Maharashtra', tel: '+919555512345' }
+                },
+                wheat: {
+                    name: 'Golden Wheat Grains',
+                    price: '₹2,200',
+                    unit: '/ quintal',
+                    category: 'Grains',
+                    description: 'High-quality golden wheat grains, ideal for making flour. Sourced directly from the fields of Punjab.',
+                    image: 'images/wheat.jpg',
+                    farmer: { name: 'Harpreet Kaur', location: 'Ludhiana, Punjab', tel: '+919988776655' }
+                }
+            };
+
+            // --- DYNAMIC CONTENT LOGIC ---
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get('product');
+            const product = products[productId] || products.tomatoes; // Default to tomatoes if not found
+
+            // 1. Update Page Title
+            document.title = `AgriConnect - ${product.name}`;
+
+            // 2. Update Breadcrumbs
+            document.getElementById('breadcrumbs').innerHTML = `
+                <a href="consumer-dashboard.html" class="hover:text-blue-600">Home</a> <span class="mx-2">/</span>
+                <a href="categories.html" class="hover:text-blue-600">${product.category}</a> <span class="mx-2">/</span>
+                <span class="text-gray-900">${product.name}</span>
+            `;
+
+            // 3. Populate Product Info
+            document.getElementById('product-name').textContent = product.name;
+            document.getElementById('product-price').innerHTML = `<p class="text-4xl font-bold text-gray-900">${product.price} <span class="text-xl font-normal text-gray-500">${product.unit}</span></p>`;
+            document.getElementById('product-description').textContent = product.description;
+
+            // 4. Populate Seller Info
+            document.getElementById('sold-by').innerHTML = `
+                <h3 class="text-md font-medium text-gray-900">Sold By</h3>
+                <div class="flex items-center mt-2">
+                    <img class="h-12 w-12 rounded-full" src="https://placehold.co/48x48/EFEFEF/333333?text=${product.farmer.name.charAt(0)}" alt="Farmer">
+                    <div class="ml-4">
+                        <p class="text-lg font-semibold text-gray-800">${product.farmer.name}</p>
+                        <p class="text-sm text-gray-600">${product.farmer.location}</p>
+                    </div>
+                </div>
+            `;
+            document.getElementById('contact-farmer-btn').href = `tel:${product.farmer.tel}`;
+
+            // 5. Populate Main Image (Simplified)
+            document.getElementById('product-image').src = product.image;
+            document.getElementById('product-image').alt = product.name;
+        });
+    </script>
+</body>
+</html>

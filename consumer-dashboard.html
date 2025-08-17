@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect - Fresh from the Farm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+        }
+        /* Animation for elements fading in */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        /* Style for the active nav and filter links */
+        .nav-active {
+            background-color: #3b82f6; /* Blue-500 */
+            color: white;
+        }
+        .filter-active {
+            background-color: #3b82f6 !important;
+            color: white !important;
+            border-color: #3b82f6 !important;
+        }
+        /* Smooth transitions for links and cards */
+        .nav-link, .filter-btn, .product-card img {
+            transition: all 0.3s ease-in-out;
+        }
+        /* Product card image zoom effect */
+        .product-card .image-wrapper {
+            overflow: hidden; /* Important for containing the zoom effect */
+        }
+        .product-card:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-leaf text-green-600 text-2xl mr-2"></i>
+                        <h1 class="text-2xl font-bold text-gray-800">AgriConnect</h1>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="consumer-dashboard.html" class="nav-active px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                            <a href="categories.html" class="nav-link text-gray-500 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium">Categories</a>
+                            <a href="my-orders.html" class="nav-link text-gray-500 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium">My Orders</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <button id="cart-button" class="p-2 rounded-full text-gray-500 hover:text-white hover:bg-blue-500 transition-colors">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                        <button id="logout-button" class="ml-4 text-gray-500 hover:text-white hover:bg-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-blue-600 text-white fade-in">
+        <div class="max-w-4xl mx-auto text-center py-20 px-4">
+            <h2 class="text-4xl md:text-5xl font-extrabold">Freshness You Can Trust</h2>
+            <p class="mt-4 text-lg text-blue-100">The best produce, straight from local farms to your table.</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
+        <div id="category-filters" class="flex justify-center flex-wrap gap-3 mb-10 fade-in" style="--delay: 200ms;">
+            <button class="filter-btn filter-active py-2 px-5 rounded-full text-sm font-semibold" data-category="all">All</button>
+            <button class="filter-btn bg-white text-gray-700 hover:bg-gray-200 py-2 px-5 rounded-full text-sm font-semibold border" data-category="vegetable">Vegetables</button>
+            <button class="filter-btn bg-white text-gray-700 hover:bg-gray-200 py-2 px-5 rounded-full text-sm font-semibold border" data-category="fruit">Fruits</button>
+            <button class="filter-btn bg-white text-gray-700 hover:bg-gray-200 py-2 px-5 rounded-full text-sm font-semibold border" data-category="grain">Grains</button>
+            <button class="filter-btn bg-white text-gray-700 hover:bg-gray-200 py-2 px-5 rounded-full text-sm font-semibold border" data-category="dairy">Dairy</button>
+        </div>
+
+        <div id="product-grid" class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 fade-in" style="--delay: 400ms;">
+            
+            <a href="product-detail.html?product=tomatoes" class="product-card group block bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl" data-category="vegetable">
+                <div class="image-wrapper w-full h-56"><img src="images/tomatoes.jpg" alt="Fresh Tomatoes" class="w-full h-full object-cover"></div>
+                <div class="p-4">
+                    <h3 class="text-md font-semibold text-gray-800">Fresh Organic Tomatoes</h3>
+                    <p class="mt-2 text-lg font-bold text-gray-900">₹30 <span class="text-sm font-normal text-gray-500">/ kg</span></p>
+                    <p class="text-xs text-gray-500 mt-1">Farmer: Ram Singh</p>
+                </div>
+            </a>
+            
+            <a href="product-detail.html?product=mangoes" class="product-card group block bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl" data-category="fruit">
+                <div class="image-wrapper w-full h-56"><img src="images/mangoes.jpg" alt="Juicy Mangoes" class="w-full h-full object-cover"></div>
+                 <div class="p-4">
+                    <h3 class="text-md font-semibold text-gray-800">Alphonso Mangoes</h3>
+                    <p class="mt-2 text-lg font-bold text-gray-900">₹600 <span class="text-sm font-normal text-gray-500">/ dozen</span></p>
+                    <p class="text-xs text-gray-500 mt-1">Farmer: Sita Devi</p>
+                </div>
+            </a>
+            
+            <a href="product-detail.html?product=cucumbers" class="product-card group block bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl" data-category="vegetable">
+                <div class="image-wrapper w-full h-56"><img src="images/cucumbers.jpg" alt="Crisp Cucumbers" class="w-full h-full object-cover"></div>
+                 <div class="p-4">
+                    <h3 class="text-md font-semibold text-gray-800">Crisp Green Cucumbers</h3>
+                    <p class="mt-2 text-lg font-bold text-gray-900">₹20 <span class="text-sm font-normal text-gray-500">/ kg</span></p>
+                    <p class="text-xs text-gray-500 mt-1">Farmer: Mohan Lal</p>
+                </div>
+            </a>
+
+            <a href="product-detail.html?product=wheat" class="product-card group block bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl" data-category="grain">
+                <div class="image-wrapper w-full h-56"><img src="images/wheat.jpg" alt="Golden Wheat" class="w-full h-full object-cover"></div>
+                 <div class="p-4">
+                    <h3 class="text-md font-semibold text-gray-800">Golden Wheat Grains</h3>
+                    <p class="mt-2 text-lg font-bold text-gray-900">₹2,200 <span class="text-sm font-normal text-gray-500">/ quintal</span></p>
+                    <p class="text-xs text-gray-500 mt-1">Farmer: Harpreet Kaur</p>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- AUTHENTICATION CHECK ---
+            if (sessionStorage.getItem('isLoggedIn') !== 'true' || sessionStorage.getItem('userType') !== 'Consumer') {
+                alert('Access Denied. Please log in as a Consumer to view this page.');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // --- LOGOUT FUNCTIONALITY ---
+            document.getElementById('logout-button')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                sessionStorage.clear();
+                alert('You have been logged out successfully.');
+                window.location.href = 'index.html';
+            });
+
+            // --- CART BUTTON ALERT ---
+            document.getElementById('cart-button')?.addEventListener('click', () => {
+                alert('Shopping cart feature is coming soon!');
+            });
+
+            // --- CATEGORY FILTERING LOGIC ---
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+
+            // This function handles the actual filtering logic
+            const filterProducts = (category) => {
+                 // Find the button that matches the category and activate it
+                filterButtons.forEach(btn => {
+                    if (btn.dataset.category === category) {
+                        btn.classList.add('filter-active');
+                    } else {
+                        btn.classList.remove('filter-active');
+                    }
+                });
+
+                // Filter product cards based on the category
+                productCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            };
+
+            // Add click events to all filter buttons
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const selectedCategory = button.dataset.category;
+                    filterProducts(selectedCategory);
+                });
+            });
+            
+            // --- NEW: CHECK FOR PRE-SELECTED CATEGORY ---
+            // This checks if we came from the categories page
+            const preselectedCategory = sessionStorage.getItem('preselectedCategory');
+            if (preselectedCategory) {
+                filterProducts(preselectedCategory);
+                // Clean up the session storage so it doesn't re-apply on refresh
+                sessionStorage.removeItem('preselectedCategory');
+            }
+        });
+    </script>
+</body>
+</html>

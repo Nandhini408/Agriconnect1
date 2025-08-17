@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect - Product Categories</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #f9fafb; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.6s ease-out forwards; animation-delay: var(--delay, 0s); }
+        .nav-active { background-color: #3b82f6; color: white; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-leaf text-green-600 text-2xl mr-2"></i><h1 class="text-2xl font-bold text-gray-800">AgriConnect</h1>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="consumer-dashboard.html" class="text-gray-500 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                            <a href="categories.html" class="nav-active px-3 py-2 rounded-md text-sm font-medium">Categories</a>
+                            <a href="my-orders.html" class="text-gray-500 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">My Orders</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <button id="logout-button" class="ml-4 flex items-center text-gray-500 hover:text-white hover:bg-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
+        <div class="text-center fade-in">
+            <h1 class="text-4xl font-extrabold text-gray-900">Explore Our Categories</h1>
+            <p class="mt-4 text-lg text-gray-600">Find the freshest products by category.</p>
+        </div>
+
+        <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+            <a href="#" class="category-card group fade-in relative h-64 rounded-xl shadow-lg overflow-hidden" data-category="vegetable" style="--delay: 100ms;">
+                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-in-out group-hover:scale-110" style="background-image: url('images/category-vegetables.jpg');"></div>
+                <div class="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-60"></div>
+                <div class="relative h-full flex flex-col justify-center items-center text-center p-4">
+                    <h2 class="text-white font-bold text-3xl">Vegetables</h2>
+                    <div class="mt-4 opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                         <span class="inline-block bg-white text-green-600 font-semibold py-2 px-5 rounded-full text-sm">
+                            Shop Now <i class="fas fa-arrow-right ml-1"></i>
+                        </span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="category-card group fade-in relative h-64 rounded-xl shadow-lg overflow-hidden" data-category="fruit" style="--delay: 200ms;">
+                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-in-out group-hover:scale-110" style="background-image: url('images/category-fruits.jpg');"></div>
+                <div class="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-60"></div>
+                <div class="relative h-full flex flex-col justify-center items-center text-center p-4">
+                    <h2 class="text-white font-bold text-3xl">Fruits</h2>
+                    <div class="mt-4 opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                         <span class="inline-block bg-white text-green-600 font-semibold py-2 px-5 rounded-full text-sm">
+                            Shop Now <i class="fas fa-arrow-right ml-1"></i>
+                        </span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="category-card group fade-in relative h-64 rounded-xl shadow-lg overflow-hidden" data-category="grain" style="--delay: 300ms;">
+                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-in-out group-hover:scale-110" style="background-image: url('images/category-grains.jpg');"></div>
+                <div class="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-60"></div>
+                <div class="relative h-full flex flex-col justify-center items-center text-center p-4">
+                    <h2 class="text-white font-bold text-3xl">Grains</h2>
+                    <div class="mt-4 opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                         <span class="inline-block bg-white text-green-600 font-semibold py-2 px-5 rounded-full text-sm">
+                            Shop Now <i class="fas fa-arrow-right ml-1"></i>
+                        </span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Authentication Check
+            if (sessionStorage.getItem('isLoggedIn') !== 'true' || sessionStorage.getItem('userType') !== 'Consumer') {
+                alert('Access Denied. Please log in as a Consumer to view this page.');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // Logout Functionality
+            document.getElementById('logout-button')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                sessionStorage.clear();
+                alert('You have been logged out successfully.');
+                window.location.href = 'index.html';
+            });
+
+            // Category Card Click Logic
+            document.querySelectorAll('.category-card').forEach(card => {
+                card.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const category = this.dataset.category;
+                    sessionStorage.setItem('preselectedCategory', category);
+                    window.location.href = 'consumer-dashboard.html';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

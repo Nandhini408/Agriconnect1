@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect - Contact Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        /* Style for the active nav link */
+        .nav-active {
+            background-color: #22c55e;
+            color: white;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-leaf text-green-600 text-2xl mr-2"></i>
+                        <h1 class="text-2xl font-bold text-gray-800">AgriConnect</h1>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="producer-dashboard.html" class="nav-link text-gray-500 hover:bg-gray-200 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+                            <a href="add-product.html" class="nav-link text-gray-500 hover:bg-gray-200 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Add Product</a>
+                            <a href="orders.html" class="nav-link text-gray-500 hover:bg-gray-200 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Orders</a>
+                            <a href="contact.html" class="nav-active px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <button id="logout-button" class="ml-4 text-gray-500 hover:text-white hover:bg-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
+        <div class="bg-white shadow-xl rounded-lg overflow-hidden fade-in">
+            <div class="text-center py-16 bg-green-600 text-white">
+                <h1 class="text-4xl font-extrabold">Get in Touch</h1>
+                <p class="mt-4 text-lg text-green-100">We're here to help you with any questions or issues.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:p-12">
+                <!-- Contact Form -->
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h2>
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="sr-only">Full Name</label>
+                            <input type="text" id="name" required class="block w-full px-4 py-3 rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="Full Name">
+                        </div>
+                        <div>
+                            <label for="email" class="sr-only">Email</label>
+                            <input type="email" id="email" required class="block w-full px-4 py-3 rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="Email Address">
+                        </div>
+                        <div>
+                            <label for="message" class="sr-only">Message</label>
+                            <textarea id="message" rows="5" required class="block w-full px-4 py-3 rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="Your Message"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-300 transform hover:scale-105">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Contact Information -->
+                <div class="bg-gray-100 p-8 rounded-lg">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h2>
+                    <div class="space-y-6 text-gray-700">
+                        <p class="flex items-start">
+                            <i class="fas fa-map-marker-alt fa-fw mt-1 mr-4 text-green-600"></i>
+                            <span>Vignan's University, Vadlamudi, Guntur, Andhra Pradesh, India</span>
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-phone-alt fa-fw mr-4 text-green-600"></i>
+                            <span>+91 12345 67890</span>
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-envelope fa-fw mr-4 text-green-600"></i>
+                            <span>support@agriconnect.com</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- AUTHENTICATION CHECK ---
+            if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+                alert('Access Denied. You must be logged in to view this page.');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // --- LOGOUT FUNCTIONALITY ---
+            const logoutButton = document.getElementById('logout-button');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    sessionStorage.clear();
+                    alert('You have been logged out successfully.');
+                    window.location.href = 'index.html';
+                });
+            }
+
+            // --- CONTACT FORM FUNCTIONALITY ---
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (event) => {
+                    event.preventDefault(); // Stop the form from submitting the traditional way
+
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+
+                    // Simple validation
+                    if (!name || !email || !message) {
+                        alert('Please fill out all fields before sending.');
+                        return;
+                    }
+
+                    // If validation passes
+                    alert(`Thank you, ${name}! Your message has been sent. We will get back to you shortly.`);
+                    
+                    // Reset the form fields for a clean user experience
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

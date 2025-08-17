@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect - Producer Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb; /* A very light gray for a clean look */
+        }
+
+        /* Animation for elements fading in */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Class to apply the animation with a delay variable */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0; /* Start as invisible */
+            animation-delay: var(--delay, 0s);
+        }
+
+        /* Style for the active nav link */
+        .nav-active {
+            background-color: #22c55e; /* Vibrant Green */
+            color: white;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                         <i class="fas fa-leaf text-green-600 text-2xl mr-2"></i>
+                         <h1 class="text-2xl font-bold text-gray-800">AgriConnect</h1>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="producer-dashboard.html" class="nav-active px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+                            <a href="add-product.html" class="nav-link text-gray-500 hover:bg-gray-200 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Add Product</a>
+                            <a href="orders.html" class="nav-link text-gray-500 hover:bg-gray-200 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Orders</a>
+                            <a href="contact.html" class="nav-link text-gray-500 hover:bg-gray-200 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <button id="logout-button" class="ml-4 text-gray-500 hover:text-white hover:bg-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-8 sm:px-6 lg:px-8">
+        <div class="px-4 py-6 sm:px-0">
+            <div class="pb-5 border-b border-gray-200 fade-in">
+                <h2 class="text-3xl font-bold leading-7 text-gray-900">Welcome back, Farmer! 🌱</h2>
+                <p class="mt-2 text-md text-gray-600">Here's an overview of your store performance.</p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-6 mt-6 sm:grid-cols-2 lg:grid-cols-4">
+                <div class="stat-card fade-in bg-white overflow-hidden shadow-lg rounded-lg p-5 transform transition hover:-translate-y-2 duration-300">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 bg-green-500 rounded-md p-3"><i class="fas fa-seedling fa-lg text-white"></i></div>
+                        <div class="ml-5 w-0 flex-1"><dl><dt class="text-sm font-medium text-gray-500 truncate">Total Products</dt><dd class="text-3xl font-semibold text-gray-900">12</dd></dl></div>
+                    </div>
+                </div>
+                <div class="stat-card fade-in bg-white overflow-hidden shadow-lg rounded-lg p-5 transform transition hover:-translate-y-2 duration-300">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 bg-yellow-500 rounded-md p-3"><i class="fas fa-shopping-cart fa-lg text-white"></i></div>
+                        <div class="ml-5 w-0 flex-1"><dl><dt class="text-sm font-medium text-gray-500 truncate">Pending Orders</dt><dd class="text-3xl font-semibold text-gray-900">5</dd></dl></div>
+                    </div>
+                </div>
+                <div class="stat-card fade-in bg-white overflow-hidden shadow-lg rounded-lg p-5 transform transition hover:-translate-y-2 duration-300">
+                     <div class="flex items-center">
+                        <div class="flex-shrink-0 bg-blue-500 rounded-md p-3"><i class="fas fa-rupee-sign fa-lg text-white"></i></div>
+                        <div class="ml-5 w-0 flex-1"><dl><dt class="text-sm font-medium text-gray-500 truncate">Revenue (Month)</dt><dd class="text-3xl font-semibold text-gray-900">85.4K</dd></dl></div>
+                    </div>
+                </div>
+                 <div class="stat-card fade-in bg-green-600 overflow-hidden shadow-lg rounded-lg hover:bg-green-700 transition transform hover:-translate-y-2 duration-300">
+                    <a href="add-product.html" class="block h-full p-5"><div class="h-full flex flex-col justify-center items-center text-white"><i class="fas fa-plus-circle fa-2x"></i><p class="mt-2 font-semibold">Add New Product</p></div></a>
+                </div>
+            </div>
+
+            <div class="mt-10 fade-in" style="--delay: 400ms;">
+                <h3 class="text-2xl font-bold text-gray-900">Your Products</h3>
+                <div class="mt-4 bg-white shadow-lg overflow-hidden sm:rounded-md">
+                    <ul role="list" class="divide-y divide-gray-200">
+                        <li>
+                            <a href="#" class="block hover:bg-gray-50 transition duration-300">
+                                <div class="flex items-center px-4 py-4 sm:px-6">
+                                    <div class="min-w-0 flex-1 flex items-center">
+                                        <div class="flex-shrink-0">
+                                        <img class="h-16 w-16 rounded-lg object-cover shadow-sm" src="images/tomatoes.jpg" alt="Golden Wheat">
+                                        </div>
+                                        <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
+                                            <div><p class="text-lg font-semibold text-green-700 truncate">Fresh Organic Tomatoes</p><p class="mt-1 flex items-center text-sm text-gray-500">In Stock: 50 kg</p></div>
+                                            <div class="hidden md:block"><div><p class="text-sm text-gray-900">Price: <span class="font-semibold">₹30 / kg</span></p><p class="mt-1 text-sm text-gray-500">Listed on: Aug 1, 2025</p></div></div>
+                                        </div>
+                                    </div>
+                                    <div><i class="fas fa-chevron-right text-gray-400"></i></div>
+                                </div>
+                            </a>
+                        </li>
+                         <li>
+                            <a href="#" class="block hover:bg-gray-50 transition duration-300">
+                                <div class="flex items-center px-4 py-4 sm:px-6">
+                                    <div class="min-w-0 flex-1 flex items-center">
+                                        <div class="flex-shrink-0">
+                                            <img class="h-16 w-16 rounded-lg object-cover shadow-sm" src="images/wheat.jpg" alt="Golden Wheat">                                        </div>
+                                        <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
+                                            <div><p class="text-lg font-semibold text-green-700 truncate">Golden Wheat Grains</p><p class="mt-1 flex items-center text-sm text-gray-500">In Stock: 250 kg</p></div>
+                                            <div class="hidden md:block"><div><p class="text-sm text-gray-900">Price: <span class="font-semibold">₹2,200 / quintal</span></p><p class="mt-1 text-sm text-gray-500">Listed on: July 28, 2025</p></div></div>
+                                        </div>
+                                    </div>
+                                    <div><i class="fas fa-chevron-right text-gray-400"></i></div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- AUTHENTICATION CHECK ---
+            // This script protects the page. It checks if the user is logged in.
+            // In a real app, this would be a more secure check (e.g., with server-side sessions).
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+
+            if (isLoggedIn !== 'true') {
+                alert('Access Denied. You must be logged in to view this page.');
+                window.location.href = 'index.html'; // Redirect to login page
+                return; // Stop further script execution
+            }
+
+            // --- LOGOUT FUNCTIONALITY ---
+            const logoutButton = document.getElementById('logout-button');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', (event) => {
+                    event.preventDefault(); // Prevent default link behavior
+                    
+                    // Clear the session storage
+                    sessionStorage.clear();
+                    
+                    alert('You have been logged out successfully.');
+                    window.location.href = 'index.html'; // Redirect to login page
+                });
+            }
+
+            // --- STAGGERED ANIMATION FOR STAT CARDS ---
+            const statCards = document.querySelectorAll('.stat-card');
+            statCards.forEach((card, index) => {
+                // Set a CSS variable for delay on each card
+                card.style.setProperty('--delay', `${index * 100}ms`);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect - Your Orders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        /* Style for the active nav link */
+        .nav-active {
+            background-color: #22c55e;
+            color: white;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        /* Styling for the interactive action links in the table */
+        .action-link {
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .action-link.disabled {
+            color: #9ca3af; /* Gray-400 */
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-leaf text-green-600 text-2xl mr-2"></i>
+                        <h1 class="text-2xl font-bold text-gray-800">AgriConnect</h1>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="producer-dashboard.html" class="nav-link text-gray-500 hover:bg-gray-200 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+                            <a href="add-product.html" class="nav-link text-gray-500 hover:bg-gray-200 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Add Product</a>
+                            <a href="orders.html" class="nav-active px-3 py-2 rounded-md text-sm font-medium">Orders</a>
+                            <a href="contact.html" class="nav-link text-gray-500 hover:bg-gray-200 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <button id="logout-button" class="ml-4 text-gray-500 hover:text-white hover:bg-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
+        <div class="px-4 md:px-0 fade-in">
+            <h1 class="text-3xl font-extrabold text-gray-900">Incoming Orders</h1>
+            <p class="mt-2 text-md text-gray-600">Manage and fulfill orders from your customers.</p>
+        </div>
+
+        <div class="mt-8 flex flex-col fade-in" style="--delay: 200ms;">
+            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="shadow-lg overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-200">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Order ID</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Customer</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Product</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Status</th>
+                                    <th scope="col" class="px-6 py-3 text-right text-xs font-bold text-gray-600 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#AC2025-003</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Priya Sharma</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Fresh Organic Tomatoes (10kg)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="status-badge px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Processing</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <a class="action-link text-green-600 hover:text-green-800" data-next-status="Shipped">Mark as Shipped</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#AC2025-002</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Amit Kumar</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Alphonso Mangoes (2 dozen)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="status-badge px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Shipped</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <a class="action-link text-green-600 hover:text-green-800" data-next-status="Delivered">Mark as Delivered</a>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#AC2025-001</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Sunita Rao</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Golden Wheat Grains (1 quintal)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="status-badge px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Delivered</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <a class="action-link disabled">Completed</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- AUTHENTICATION CHECK ---
+            if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+                alert('Access Denied. You must be logged in to view this page.');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // --- LOGOUT FUNCTIONALITY ---
+            const logoutButton = document.getElementById('logout-button');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    sessionStorage.clear();
+                    alert('You have been logged out successfully.');
+                    window.location.href = 'index.html';
+                });
+            }
+
+            // --- INTERACTIVE ORDER ACTIONS ---
+            const actionLinks = document.querySelectorAll('.action-link');
+            actionLinks.forEach(link => {
+                // Skip already disabled links
+                if (link.classList.contains('disabled')) return;
+
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    
+                    const clickedLink = event.currentTarget;
+                    const nextStatus = clickedLink.dataset.nextStatus;
+                    
+                    // Find the elements within the same table row
+                    const row = clickedLink.closest('tr');
+                    const statusBadge = row.querySelector('.status-badge');
+
+                    // Update UI based on the next status
+                    if (nextStatus === 'Shipped') {
+                        // Update badge
+                        statusBadge.textContent = 'Shipped';
+                        statusBadge.className = 'status-badge px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800';
+                        
+                        // Update link for the next action
+                        clickedLink.textContent = 'Mark as Delivered';
+                        clickedLink.dataset.nextStatus = 'Delivered';
+                    } else if (nextStatus === 'Delivered') {
+                        // Update badge
+                        statusBadge.textContent = 'Delivered';
+                        statusBadge.className = 'status-badge px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800';
+
+                        // Finalize the action
+                        clickedLink.textContent = 'Completed';
+                        clickedLink.classList.add('disabled'); // Disable the link
+                    }
+                    
+                    alert('Order status has been updated!');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

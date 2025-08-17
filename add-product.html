@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect - Add New Product</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+        }
+        /* Animation for elements fading in */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        /* Style for the active nav link */
+        .nav-active {
+            background-color: #22c55e;
+            color: white;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        /* Hides the default file input, as we have a custom-styled label */
+        .file-input-hidden {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-leaf text-green-600 text-2xl mr-2"></i>
+                        <h1 class="text-2xl font-bold text-gray-800">AgriConnect</h1>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="producer-dashboard.html" class="nav-link text-gray-500 hover:bg-gray-200 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+                            <a href="add-product.html" class="nav-active px-3 py-2 rounded-md text-sm font-medium">Add Product</a>
+                            <a href="orders.html" class="nav-link text-gray-500 hover:bg-gray-200 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Orders</a>
+                            <a href="contact.html" class="nav-link text-gray-500 hover:bg-gray-200 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <button id="logout-button" class="ml-4 text-gray-500 hover:text-white hover:bg-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto py-8 sm:px-6 lg:px-8">
+        <div class="px-4 py-6 sm:px-0 fade-in">
+            <div class="pb-5 border-b border-gray-200">
+                <h2 class="text-3xl font-bold leading-7 text-gray-900">List a New Product</h2>
+                <p class="mt-2 text-md text-gray-600">Fill in the details below to add your produce to the marketplace.</p>
+            </div>
+
+            <form id="add-product-form" class="mt-8 space-y-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg space-y-6">
+                    <div>
+                        <label for="product-name" class="block text-sm font-medium text-gray-700">Product Name</label>
+                        <input type="text" id="product-name" required placeholder="e.g., Fresh Organic Tomatoes" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm">
+                    </div>
+
+                    <div>
+                        <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                        <textarea id="description" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm" placeholder="Describe your product, its quality, and origin."></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        <div>
+                            <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
+                            <select id="category" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm">
+                                <option>Vegetables</option>
+                                <option>Fruits</option>
+                                <option>Grains</option>
+                                <option>Dairy</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="quantity" class="block text-sm font-medium text-gray-700">Available Quantity</label>
+                            <input type="number" id="quantity" required placeholder="e.g., 50" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm">
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                         <div>
+                            <label for="price" class="block text-sm font-medium text-gray-700">Price (₹)</label>
+                            <input type="number" id="price" required placeholder="e.g., 30" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label for="unit" class="block text-sm font-medium text-gray-700">Unit</label>
+                            <select id="unit" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm">
+                                <option>per kg</option>
+                                <option>per piece</option>
+                                <option>per dozen</option>
+                                <option>per quintal</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Product Image</label>
+                        <div id="image-upload-box" class="mt-1 relative flex justify-center items-center h-48 w-full rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
+                             <img id="image-preview" src="" alt="Image Preview" class="absolute h-full w-full object-cover rounded-md hidden">
+                            <div id="upload-prompt" class="space-y-1 text-center">
+                                <i class="fas fa-cloud-upload-alt fa-3x text-gray-400"></i>
+                                <div class="flex text-sm text-gray-600">
+                                    <span class="font-medium text-green-600 hover:text-green-500">Upload a file</span>
+                                    <p class="pl-1">or drag and drop</p>
+                                </div>
+                                <p class="text-xs text-gray-500">PNG, JPG up to 10MB</p>
+                            </div>
+                            <input id="file-upload" type="file" class="file-input-hidden" accept="image/png, image/jpeg">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-end space-x-4">
+                    <button type="button" onclick="window.location.href='producer-dashboard.html'" class="rounded-md border border-gray-300 bg-white py-2 px-5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transition-all duration-300">
+                        Cancel
+                    </button>
+                    <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-green-600 py-2 px-6 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-300 transform hover:scale-105">
+                        List Product
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- AUTHENTICATION CHECK ---
+            if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+                alert('Access Denied. You must be logged in to view this page.');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // --- LOGOUT FUNCTIONALITY ---
+            const logoutButton = document.getElementById('logout-button');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    sessionStorage.clear();
+                    alert('You have been logged out successfully.');
+                    window.location.href = 'index.html';
+                });
+            }
+
+            const addProductForm = document.getElementById('add-product-form');
+            if(addProductForm) {
+                addProductForm.addEventListener('submit', (event) => {
+                    event.preventDefault(); // Prevent the default form submission
+
+                    // --- FORM VALIDATION ---
+                    const productName = document.getElementById('product-name').value;
+                    const price = document.getElementById('price').value;
+                    const quantity = document.getElementById('quantity').value;
+
+                    if (!productName || !price || !quantity) {
+                        alert('Please fill out at least the Product Name, Price, and Quantity fields.');
+                        return; // Stop if validation fails
+                    }
+                    
+                    // If validation passes
+                    alert(`"${productName}" has been successfully listed!`);
+                    window.location.href = 'producer-dashboard.html';
+                });
+            }
+
+            // --- IMAGE PREVIEW FUNCTIONALITY ---
+            const fileInput = document.getElementById('file-upload');
+            const imagePreview = document.getElementById('image-preview');
+            const uploadPrompt = document.getElementById('upload-prompt');
+
+            if(fileInput) {
+                fileInput.addEventListener('change', function() {
+                    const file = this.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            imagePreview.src = e.target.result;
+                            imagePreview.classList.remove('hidden'); // Show the preview
+                            uploadPrompt.classList.add('hidden'); // Hide the prompt text
+                        }
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
